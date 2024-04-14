@@ -14,7 +14,7 @@ This project aims to create an interactive chatbot application where users can e
 
 ## Technologies
 
-#### Frontend: HTML, CSS, JavaScript, React.js
+#### Frontend: HTML, CSS, JavaScript, React.js, MUI, React Icons, 
 
 #
 

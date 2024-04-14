@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   width: 100%;
@@ -11,8 +15,31 @@ body {
 
 body {
   box-sizing: border-box;
+  font-family: var(--font-primary);
 }
 
 * {
   margin: 0;
+}
+
+.itemsToGetHoverEffect {
+  transition: 0.15s ease-in-out !important;
+}
+
+.itemsToGetHoverEffect:hover {
+  color: blueviolet !important;
+}
+
+.itemsToGetBackgroundEffect {
+  transition: 0.15s ease-in-out !important;
+}
+
+.itemsToGetBackgroundEffect:hover {
+  background-color: blueviolet !important;
+}
+
+.MuiPagination-ul {
+  justify-content: center !important;
+  align-items: center !important;
+  gap: .75rem !important
 }
