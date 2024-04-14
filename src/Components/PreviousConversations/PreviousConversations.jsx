@@ -3,6 +3,8 @@ import MyContext from "../Context";
 import { Rating, Pagination } from "@mui/material";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { enqueueSnackbar } from "notistack";
+import { AiFillLike } from "react-icons/ai";
+import { AiFillDislike } from "react-icons/ai";
 
 export default () => {
   const { chatHistory, setChatHistory } = useContext(MyContext);
@@ -103,6 +105,15 @@ export default () => {
                   <div className="flex flex-col gap-1">
                     <span className="font-semibold text-[18px]">You</span>
                     <span className="ml-[0.07rem]">{convo.question}</span>
+                    <div className="text-[12px] ml-[0.06rem] mt-3.5 font-[var(--font-secondary)]">
+                      {new Date(convo.questionAskedTime)?.toLocaleString(
+                        "en-US",
+                        {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        }
+                      )}
+                    </div>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -114,6 +125,19 @@ export default () => {
                   <div className="flex flex-col gap-1">
                     <span className="font-semibold text-[18px]">Bot AI</span>
                     <span className="ml-[0.05rem]">{convo.answer}</span>
+                    <div className="text-[12px] flex items-center gap-3 ml-[0.05rem] mt-3.5 font-[var(--font-secondary)]">
+                      {new Date(convo.answerTime)?.toLocaleString("en-US", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                      {convo.liked === true ? (
+                        <AiFillLike className="w-4 h-4 text-green-500" />
+                      ) : convo.liked === false ? (
+                        <AiFillDislike className="w-4 h-4 text-[#f31260]" />
+                      ) : (
+                        ""
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

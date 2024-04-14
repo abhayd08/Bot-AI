@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import MyContext from "../Context";
 import { Rating } from "@mui/material";
+import { TbBulbFilled } from "react-icons/tb";
 
 const style = {
   position: "absolute",
@@ -28,7 +29,7 @@ export default function BasicModal() {
 
   const handleOpen = () => setIsFeedbackModalOpen(true);
   const handleClose = () => setIsFeedbackModalOpen(false);
-  const [rating, setRating] = React.useState(5);
+  const [rating, setRating] = React.useState(4);
   const [feedback, setFeedback] = React.useState(null);
 
   return (
@@ -41,7 +42,8 @@ export default function BasicModal() {
         sx={style}
         className="border-0 outline-0 max-h-[90vh] overflow-y-auto"
       >
-        <div className="flex justify-between border-0 items-center gap-10">
+        <div className="flex border-0 items-center gap-5">
+            <TbBulbFilled className="w-12 h-12" />
           <Typography
             className="font-[var(--font-secondary)] text-[22px] leading-[30px] text-black"
             variant="h6"
@@ -83,7 +85,7 @@ export default function BasicModal() {
                     feedback: feedback,
                   },
                 ]);
-                const newHistory = [...prevHistory, updatedConversation];
+                const newHistory = [updatedConversation, ...prevHistory];
                 return newHistory;
               });
               const timer = setTimeout(() => {
