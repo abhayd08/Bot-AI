@@ -21,8 +21,8 @@ export default () => {
     setIsFeedbackModalOpen,
   } = useContext(MyContext);
 
-  const MODEL_NAME = import.meta.env.VITE_REACT_APP_MODEL_NAME;
-  const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
+  const MODEL_NAME = process.env.MODEL_NAME;
+  const API_KEY = process.env.API_KEY;
 
   const [askBtnContent, setAskBtnContent] = useState("Ask");
 
