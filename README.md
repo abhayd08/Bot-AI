@@ -49,4 +49,4 @@ This project aims to create an interactive chatbot application where users can e
 
 This project is based on React and utilizes Vite for fast development and bundling. Happy coding! 🚀
 
-#### Deployed Link - https://botai-abhay.vercel.app/
+#### Deployed Link - https://bot-ai-abhay.vercel.app/
