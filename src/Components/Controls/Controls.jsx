@@ -21,8 +21,8 @@ export default () => {
     setIsFeedbackModalOpen,
   } = useContext(MyContext);
 
-  const MODEL_NAME = process.env.Model_Name;
-  const API_KEY = process.env.API_KEY;
+  const MODEL_NAME = import.meta.env.VITE_REACT_APP_MODEL_NAME;
+  const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
 
   const [askBtnContent, setAskBtnContent] = useState("Ask");
 
@@ -72,7 +72,7 @@ export default () => {
         history: [],
       });
 
-      const result = await chat.sendMessage(question);
+      const result = await chat.sendMessage(question.trim());
       const response = result.response;
       setCurrentConversation((prevConversation) => {
         const newConversation = [...prevConversation];
@@ -106,7 +106,11 @@ export default () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          runChat(question);
+          if (question.trim().length > 0) {
+            runChat(question);
+          } else {
+            enqueueSnackbar("Please enter something.", { variant: "warning" });
+          }
         }}
         className="flex w-full justify-center items-center gap-[24px] gap-y-[15px] flex-col xl:flex-row"
       >

@@ -43,7 +43,7 @@ export default function BasicModal() {
         className="border-0 outline-0 max-h-[90vh] overflow-y-auto"
       >
         <div className="flex border-0 items-center gap-5">
-            <TbBulbFilled className="w-12 h-12" />
+          <TbBulbFilled className="w-12 h-12" />
           <Typography
             className="font-[var(--font-secondary)] text-[22px] leading-[30px] text-black"
             variant="h6"
