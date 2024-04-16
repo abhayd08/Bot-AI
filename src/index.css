@@ -35,11 +35,11 @@ body {
 }
 
 .itemsToGetBackgroundEffect:hover {
-  background-color: blueviolet !important;
+  background-color: #f31260 !important;
 }
 
 .MuiPagination-ul {
   justify-content: center !important;
   align-items: center !important;
-  gap: .75rem !important
+  gap: 0.75rem !important;
 }

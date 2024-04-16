@@ -21,8 +21,8 @@ export default () => {
     setIsFeedbackModalOpen,
   } = useContext(MyContext);
 
-  const MODEL_NAME = process.env.MODEL_NAME;
-  const API_KEY = process.env.API_KEY;
+  const MODEL_NAME = import.meta.env.VITE_REACT_APP_MODEL_NAME;
+  const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
 
   const [askBtnContent, setAskBtnContent] = useState("Ask");
 
@@ -102,7 +102,7 @@ export default () => {
   }
 
   return (
-    <div className="py-3 rounded-t-[5px] bottom-0 left-[50%] w-full bg-[#dacdf2] translate-x-[-50%] fixed px-2 flex justify-center items-center">
+    <div className="py-3 rounded-t-[5px] bottom-0 left-[50%] w-full bg-gradient-to-r from-[#2aa8ff] to-white translate-x-[-50%] fixed px-2 flex justify-center items-center">
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -123,7 +123,7 @@ export default () => {
         />
         <div className="flex justify-center items-center gap-[24px]">
           <button
-            className="askBtn rounded-[5px] text-white itemsToGetBackgroundEffect border-0 outline-0 w-[73.82px] h-[42px] bg-[purple] text-center"
+            className="askBtn rounded-[5px] text-white itemsToGetBackgroundEffect border-0 outline-0 w-[73.82px] h-[42px] bg-[#2aa8ff] text-center"
             type="submit"
           >
             {askBtnContent}
@@ -138,7 +138,7 @@ export default () => {
                 });
               }
             }}
-            className="rounded-[5px] saveBtn text-white itemsToGetBackgroundEffect cursor-pointer w-[73.82px] flex justify-center items-center h-[42px] bg-[purple] text-center"
+            className="rounded-[5px] saveBtn text-white itemsToGetBackgroundEffect cursor-pointer w-[73.82px] flex justify-center items-center h-[42px] bg-[#2aa8ff] text-center"
           >
             Save
           </button>

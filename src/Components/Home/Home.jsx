@@ -5,6 +5,8 @@ import MyContext from "../Context";
 import { useState, useEffect } from "react";
 import PreviousConversations from "../PreviousConversations/PreviousConversations";
 import Feedback from "../Feedback/Feedback";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import { useDisclosure } from "@nextui-org/react";
 
 export default () => {
   useEffect(() => {
@@ -37,6 +39,7 @@ export default () => {
   const [toShowPreviousConversations, setToShowPreviousConversations] =
     useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
+  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("chatHistory")) {
@@ -61,6 +64,8 @@ export default () => {
         setToShowPreviousConversations,
         isFeedbackModalOpen,
         setIsFeedbackModalOpen,
+        isConfirmationModalOpen,
+        setIsConfirmationModalOpen,
       }}
     >
       <div className="h-[100vh]">
@@ -73,6 +78,7 @@ export default () => {
             <Dashboard />
           )}
           <Feedback />
+          <ConfirmationModal />
         </div>
       </div>
     </MyContext.Provider>

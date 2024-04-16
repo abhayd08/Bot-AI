@@ -15,6 +15,7 @@
     "@google/generative-ai": "^0.6.0",
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.15",
+    "@nextui-org/react": "^2.3.0",
     "@react-spring/web": "^9.7.3",
     "dotenv": "^16.4.5",
     "notistack": "^3.0.1",

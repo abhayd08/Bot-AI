@@ -25,6 +25,7 @@ export default function BasicModal() {
     setChatHistory,
     currentConversation,
     setCurrentConversation,
+    setQuestion,
   } = React.useContext(MyContext);
 
   const handleOpen = () => setIsFeedbackModalOpen(true);
@@ -90,6 +91,7 @@ export default function BasicModal() {
               });
               const timer = setTimeout(() => {
                 setCurrentConversation([[]]);
+                setQuestion("");
                 handleClose();
               }, 0);
 
