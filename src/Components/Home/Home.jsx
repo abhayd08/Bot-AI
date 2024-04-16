@@ -6,16 +6,15 @@ import { useState, useEffect } from "react";
 import PreviousConversations from "../PreviousConversations/PreviousConversations";
 import Feedback from "../Feedback/Feedback";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
-import { useDisclosure } from "@nextui-org/react";
 
 export default () => {
   useEffect(() => {
     if (window.innerWidth >= 1024) {
       document.getElementsByClassName("mainContainer")[0].style.background =
-        "linear-gradient(to right, white, rgba(151, 133, 186, 0.2))";
+        "linear-gradient(to right, white, rgb(191 229 255))";
     } else {
       document.getElementsByClassName("mainContainer")[0].style.background =
-        "linear-gradient(180deg, white, #EDE4FF)";
+        "linear-gradient(180deg, white, rgb(191 229 255))";
     }
   }, []);
 
@@ -23,12 +22,10 @@ export default () => {
     window.addEventListener("resize", () => {
       if (window.innerWidth >= 1024) {
         document.getElementsByClassName("mainContainer")[0].style.background =
-          "linear-gradient(to right, white, rgba(151, 133, 186, 0.2))";
-        setOpen(false);
+          "linear-gradient(to right, white, rgb(191 229 255))";
       } else {
         document.getElementsByClassName("mainContainer")[0].style.background =
-          "linear-gradient(180deg, white, #EDE4FF)";
-        setOpen(false);
+          "linear-gradient(180deg, white, rgb(191 229 255))";
       }
     });
   });
@@ -68,7 +65,13 @@ export default () => {
         setIsConfirmationModalOpen,
       }}
     >
-      <div className="h-[100vh]">
+      <div
+        className={`${
+          toShowPreviousConversations
+            ? "h-[calc(100vh-52px)]"
+            : "h-[calc(100vh-115px)] xl:h-[calc(100vh-60px)]"
+        }`}
+      >
         <Header />
         <div className="flex mainContainer h-full">
           <NavBar />

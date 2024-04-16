@@ -41,15 +41,15 @@ export default () => {
   };
 
   return (
-    <div className="px-2 py-4 lg:hidden flex items-center mb-[40px] gap-3.5">
+    <div className="px-2 py-4 lg:hidden flex items-center mb-[15px] gap-3.5">
       <MenuIcon
         onClick={toggleDrawer(true)}
-        sx={{ fontSize: "2.25rem" }}
-        className="cursor-pointer menuIcon itemsToGetHoverEffect text-[#9785BA]"
+        sx={{ fontSize: "2rem" }}
+        className="cursor-pointer menuIcon itemsToGetHoverEffect text-[#2aa8ff]"
       />
-      <span className="font-bold leading-[36.77px] text-[32px] text-[#9785BA]">
+      <a href="/" className="font-bold text-[32px] text-[#2aa8ff]">
         Bot AI
-      </span>
+      </a>
       <Drawer open={open} onClose={toggleDrawer(false)}>
         <nav className="flex flex-col bg-white w-[250px]">
           <div className="flex flex-col gap-[11px] items-center">

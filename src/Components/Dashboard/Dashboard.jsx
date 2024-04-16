@@ -5,25 +5,22 @@ import { AiFillLike } from "react-icons/ai";
 import { AiFillDislike } from "react-icons/ai";
 
 export default () => {
-  const {
-    question,
-    setQuestion,
-    currentConversation,
-    setCurrentConversation,
-    chatHistory,
-  } = useContext(MyContext);
+  const { currentConversation, setCurrentConversation } = useContext(MyContext);
 
   return (
-    <div className="w-full pb-[130px] xl:pb-[75px] max-h-[100vh] overflow-y-auto px-2 flex flex-col">
-      <h1 className="ml-[22px] mt-[8px] mb-[50px] hidden lg:block text-[28px] leading-[32.17px] font-bold text-[#9785BA]">
-        Bot AI
-      </h1>
+    <div className="w-full pb-[130px] xl:pb-[25px] max-h-[100vh] overflow-y-auto px-2 flex flex-col">
+      <a
+        href="/"
+        className="ml-[22px] cursor-pointer mt-[8px] mb-[50px] hidden lg:block text-[28px] leading-[32.17px] font-bold text-[#2aa8ff]"
+      >
+        Bot <span className="text-[#0095ff]">AI</span>
+      </a>
       {currentConversation[0].length > 0 ? (
         currentConversation[0].map((convo) => {
           return (
             <div
               key={convo.id}
-              className="px-2 lg:px-[50px] flex flex-col gap-8 mb-8"
+              className="px-1 lg:px-[50px] flex flex-col gap-8 mb-8"
             >
               <div className="flex gap-4">
                 <img
@@ -120,7 +117,7 @@ export default () => {
         })
       ) : (
         <div className="mt-[120px] flex flex-col justify-center items-center gap-3">
-          <h3 className="text-center font-medium text-[28px] leading-[38px] text-black">
+          <h3 className="text-center font-medium text-[28px] tracking-wide leading-[38px] text-black">
             How Can I Help You Today?
           </h3>
           <img src="/assets/logo2.png" className="w-[65.3px] mr-2" alt="Logo" />

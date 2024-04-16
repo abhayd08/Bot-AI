@@ -15,9 +15,6 @@ export default () => {
     setQuestion,
     currentConversation,
     setCurrentConversation,
-    chatHistory,
-    setChatHistory,
-    isFeedbackModalOpen,
     setIsFeedbackModalOpen,
   } = useContext(MyContext);
 
@@ -28,7 +25,9 @@ export default () => {
 
   async function runChat(question) {
     try {
-      setAskBtnContent(<CircularProgress />);
+      setAskBtnContent(
+        <CircularProgress style={{ padding: ".4rem", color: "white" }} />
+      );
       document
         .getElementsByClassName("askBtn")[0]
         .setAttribute("disabled", true);
@@ -87,29 +86,41 @@ export default () => {
         return newConversation;
       });
     } catch (error) {
+      enqueueSnackbar(
+        "There is an issue loading the response. Please refresh the page or try again later.",
+        {
+          variant: "error",
+        }
+      );
       console.log(error);
     } finally {
       const timer = setTimeout(() => {
         setQuestion("");
+        setAskBtnContent("Ask");
+        document
+          .getElementsByClassName("askBtn")[0]
+          .removeAttribute("disabled");
+        document
+          .getElementsByClassName("saveBtn")[0]
+          .removeAttribute("disabled");
       }, 0);
-
-      setAskBtnContent("Ask");
-      document.getElementsByClassName("askBtn")[0].removeAttribute("disabled");
-      document.getElementsByClassName("saveBtn")[0].removeAttribute("disabled");
 
       return () => clearTimeout(timer);
     }
   }
 
   return (
-    <div className="py-3 rounded-t-[5px] bottom-0 left-[50%] w-full bg-gradient-to-r from-[#2aa8ff] to-white translate-x-[-50%] fixed px-2 flex justify-center items-center">
+    <div className="py-3 rounded-t-[8px] bottom-0 left-[50%] w-full bg-[#bfe5ff] translate-x-[-50%] fixed px-2 flex justify-center items-center">
       <form
         onSubmit={(e) => {
           e.preventDefault();
           if (question.trim().length > 0) {
             runChat(question);
           } else {
-            enqueueSnackbar("Please enter something.", { variant: "warning" });
+            enqueueSnackbar(
+              "Could you please provide the question you'd like to ask?",
+              { variant: "info" }
+            );
           }
         }}
         className="flex w-full justify-center items-center gap-[24px] gap-y-[15px] flex-col xl:flex-row"
@@ -119,26 +130,33 @@ export default () => {
           required
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          className="w-[845px] text-black px-2 text-[15px] outline-0 max-w-[90vw] h-[41px] border-[1px] border-solid border-[#00000073]  rounded-[5px] bg-white"
+          className="w-[845px] text-black px-2 text-[15px] outline-0 max-w-[90vw] h-[41px] border-[0] ring-1 ring-[#2aa8ff] rounded-[10px] bg-white"
         />
         <div className="flex justify-center items-center gap-[24px]">
           <button
-            className="askBtn rounded-[5px] text-white itemsToGetBackgroundEffect border-0 outline-0 w-[73.82px] h-[42px] bg-[#2aa8ff] text-center"
+            className={`askBtn active:scale-[0.96] ring-1 ring-[white] rounded-[10px] text-white itemsToGetBackgroundEffect border-0 outline-0 w-[73.82px] h-[42px] ${
+              askBtnContent !== "Ask"
+                ? "bg-[#f31260] cursor-default"
+                : "bg-[#2aa8ff]"
+            } text-center`}
             type="submit"
           >
             {askBtnContent}
           </button>
           <button
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               if (currentConversation[0].length > 0) {
                 setIsFeedbackModalOpen(true);
               } else {
-                enqueueSnackbar("Initaiat a chat first", {
-                  variant: "warning",
+                enqueueSnackbar("Initiate a conversation first.", {
+                  variant: "info",
                 });
               }
             }}
-            className="rounded-[5px] saveBtn text-white itemsToGetBackgroundEffect cursor-pointer w-[73.82px] flex justify-center items-center h-[42px] bg-[#2aa8ff] text-center"
+            className={`rounded-[10px] active:scale-[0.96] ${
+              askBtnContent !== "Ask" ? "cursor-default" : ""
+            } saveBtn border-0 outline-0 ring-1 ring-[white] text-white itemsToGetBackgroundEffect cursor-pointer w-[73.82px] flex justify-center items-center h-[42px] bg-[#2aa8ff] text-center`}
           >
             Save
           </button>

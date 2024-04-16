@@ -1,13 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import MyContext from "../Context";
 import { Rating, Pagination } from "@mui/material";
-import { IoIosCheckmarkCircle } from "react-icons/io";
 import { enqueueSnackbar } from "notistack";
 import { AiFillLike } from "react-icons/ai";
 import { AiFillDislike } from "react-icons/ai";
 
 export default () => {
-  const { chatHistory, setChatHistory } = useContext(MyContext);
+  const { chatHistory } = useContext(MyContext);
   const [filteredChatHistory, setFilteredChatHistory] = useState([]);
   const [rating, setRating] = useState(0);
   const [numberOfAvailableConversations, setNumberOfAvailableConversations] =
@@ -28,49 +27,82 @@ export default () => {
   }, [chatHistory]);
 
   useEffect(() => {
-    if (rating > 0) {
+    if (filteredChatHistory?.length > 0) {
       setCurrentPage(1);
       setNumberOfAvailableConversations(filteredChatHistory?.length);
       setItemsToShow(filteredChatHistory);
+    } else {
+      setCurrentPage(1);
+      setNumberOfAvailableConversations(chatHistory?.length);
+      setItemsToShow([...chatHistory]);
     }
   }, [filteredChatHistory]);
 
   return (
-    <div className="max-h-[100vh] overflow-y-auto pb-[80px] w-full">
-      <h1 className="ml-[30px] mt-[8px] mb-[20px] hidden lg:block text-[28px] leading-[32.17px] font-bold text-[#9785BA]">
-        Bot AI
-      </h1>
+    <div className="max-h-[100vh] overflow-y-auto pb-[110px] lg:pb-[25px] w-full">
+      <a
+        href="/"
+        className="ml-[30px] mt-[8px] mb-[25px] hidden lg:block text-[28px] leading-[32.17px] font-bold text-[#2aa8ff]"
+      >
+        Bot <span className="text-[#0095ff]">AI</span>
+      </a>
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          if (filteredChatHistory.length > 0) {
+            setFilteredChatHistory([]);
+            return;
+          }
           if (rating > 0) {
-            setFilteredChatHistory(
-              chatHistory.filter(
-                (prevHistory) => prevHistory[1][0].rating >= rating
-              )
+            const filteredHistory = chatHistory.filter(
+              (prevHistory) => prevHistory[1][0].rating >= rating
             );
+            if (filteredHistory.length > 0) {
+              setFilteredChatHistory(filteredHistory);
+            } else {
+              enqueueSnackbar("No matching search results found.", {
+                variant: "warning",
+              });
+            }
           } else {
-            enqueueSnackbar("selecte a rating", { variant: "info" });
+            enqueueSnackbar("Please select a rating to use as a filter.", {
+              variant: "info",
+            });
           }
         }}
-        className="flex justify-center mb-[55px] gap-3 items-center"
+        className="flex justify-center px-2 mb-[55px] gap-3 items-center"
       >
-        <span className="text-bold font-medium text-[18px]">Filter: </span>
         <Rating
-          value={rating}
+          value={Number(rating)}
           onChange={(e) => setRating(e.target.value)}
           name="filterByRating"
         />
-        <button type="submit" className="border-0 outline-0">
-          <IoIosCheckmarkCircle className="w-7 h-7 itemsToGetHoverEffect text-green-500" />
-        </button>
+        {filteredChatHistory.length > 0 ? (
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setFilteredChatHistory([]);
+            }}
+            className="border-0 outline-0"
+          >
+            <span className={`text-[#f31260]`}>Cancel</span>
+          </button>
+        ) : (
+          <button type="submit" className="border-0 outline-0">
+            <span
+              className={`itemsToGetHoverEffect hover:text-[#f31260!important] text-[#2aa8ff]`}
+            >
+              Filter
+            </span>
+          </button>
+        )}
       </form>
-      <div>
+      <div className="mb-[55px]">
         {itemsToShow?.[currentPage - 1]?.[1]?.[0]?.rating ? (
-          <div className="flex mb-4 items-center px-2 sm:px-4 font-medium fomt-[var(--font-secondary)]">
+          <div className="flex mb-4 items-center px-2 sm:px-4 font-medium">
             Rating:{" "}
             <Rating
-              value={itemsToShow[currentPage - 1][1][0].rating}
+              value={Number(itemsToShow[currentPage - 1][1][0].rating)}
               readOnly
               name="rating"
               className="ml-1"
@@ -81,9 +113,26 @@ export default () => {
         )}
 
         {itemsToShow?.[currentPage - 1]?.[1]?.[0].feedback ? (
-          <div className="flex items-start px-2 sm:px-4 fomt-[var(--font-secondary)]">
+          <div className="flex items-start px-2 mb-4 sm:px-4">
             <span className="font-medium">Feedback:&nbsp;</span>{" "}
             {itemsToShow[currentPage - 1][1][0].feedback}
+          </div>
+        ) : (
+          ""
+        )}
+
+        {itemsToShow?.[currentPage - 1]?.[1]?.[0].date ? (
+          <div className="flex items-center text-[0.72rem] text-gray-600 px-2 sm:px-4">
+            {new Date(itemsToShow[currentPage - 1][1][0].date).toLocaleString(
+              "en-US",
+              {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              }
+            )}
           </div>
         ) : (
           ""
@@ -94,7 +143,7 @@ export default () => {
             return (
               <div
                 key={convo.id}
-                className="px-2 lg:px-[50px] flex flex-col gap-8 mt-14 mb-8"
+                className="px-4 lg:px-[50px] flex flex-col gap-8 my-8"
               >
                 <div className="flex gap-4">
                   <img
@@ -144,11 +193,11 @@ export default () => {
             );
           })
         : ""}
-      <div className="fixed bottom-0 py-3 px-2 left-[50%] translate-x-[-50%] flex justify-center items-center flex-wrap bg-[#dacdf2] w-full">
+      <div className="fixed bottom-0 py-3 px-2 left-[50%] translate-x-[-50%] flex justify-center items-center flex-wrap bg-[#bfe5ff] w-full">
         <Pagination
           onChange={(e, val) => setCurrentPage(Number(val))}
           page={currentPage}
-          color="secondary"
+          color="primary"
           count={numberOfAvailableConversations}
         />
       </div>

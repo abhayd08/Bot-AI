@@ -23,15 +23,15 @@ body {
 }
 
 .itemsToGetHoverEffect {
-  transition: 0.15s ease-in-out !important;
+  transition: 0.18s ease-in-out !important;
 }
 
 .itemsToGetHoverEffect:hover {
-  color: blueviolet !important;
+  color: #2aa8ff !important;
 }
 
 .itemsToGetBackgroundEffect {
-  transition: 0.15s ease-in-out !important;
+  transition: 0.18s ease-in-out !important;
 }
 
 .itemsToGetBackgroundEffect:hover {

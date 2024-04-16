@@ -4,17 +4,33 @@ This project aims to create an interactive chatbot application where users can e
 
 #
 
-## Features
+## Reasoning Behind Technical Choices
 
-### Responsive Design:
+### Vite
 
-- The application is fully responsive.
+- I chose Vite as the build tool for this project due to its fast development server and quick startup time. It's well-suited for modern web development workflows and provides efficient bundling and hot module replacement.
+
+### Gemini API
+
+- I integrated the Gemini API to power the chatbot's AI capabilities. Gemini provides state-of-the-art natural language processing models that generate human-like responses to user queries, enhancing the user experience of the application.
+
+#
+
+## Reasoning Behind Design Choices
+
+### Figma Design with Custom Touches
+
+- I opted for the Figma design as the foundation for the web app's UI. I customized the design with unique touches to align it with the project's branding and theme. This ensures a visually appealing and cohesive user interface.
+
+### Theme
+
+- I selected a specific theme for the application to create a consistent look and feel across all components. The theme enhances readability, usability, and overall user experience.
 
 #
 
 ## Technologies
 
-#### Frontend: HTML, CSS, JavaScript, React.js, MUI, React Icons, 
+#### Frontend: HTML, CSS, JavaScript, React.js, Tailwind CSS, MUI, React Icons, Gemini
 
 #
 
@@ -48,5 +64,7 @@ This project aims to create an interactive chatbot application where users can e
 #
 
 This project is based on React and utilizes Vite for fast development and bundling. Happy coding! 🚀
+
+- Overall, the Bot AI web app created using Vite and integrated with the Gemini API offers a seamless user experience and demonstrates the potential of AI-driven chatbots in modern web applications.
 
 #### Deployed Link - https://bot-ai-abhay.vercel.app/
