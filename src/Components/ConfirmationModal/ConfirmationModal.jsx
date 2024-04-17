@@ -5,17 +5,6 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import MyContext from "../Context";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  bgcolor: "white",
-  boxShadow: 24,
-  borderRadius: "0.75rem",
-  p: 2.5,
-};
-
 export default function BasicModal() {
   const {
     setIsFeedbackModalOpen,
@@ -23,7 +12,19 @@ export default function BasicModal() {
     isConfirmationModalOpen,
     setIsConfirmationModalOpen,
     setQuestion,
+    isDarkModeChecked,
   } = React.useContext(MyContext);
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    bgcolor: isDarkModeChecked ? "rgb(17, 24, 39)" : "white",
+    boxShadow: 24,
+    borderRadius: "0.75rem",
+    p: 2.5,
+  };
 
   const handleClose = () => setIsConfirmationModalOpen(false);
 
@@ -39,7 +40,7 @@ export default function BasicModal() {
       >
         <div className="flex border-0 items-center gap-5">
           <Typography
-            className="font-[var(--font-secondary)] text-[22px] leading-[30px] text-black"
+            className="font-[var(--font-secondary)] text-[22px] leading-[30px]"
             variant="h6"
             component="h2"
           >
@@ -60,7 +61,7 @@ export default function BasicModal() {
               fontSize: "16px",
               borderRadius: "10px",
             }}
-            className="text-[#f31260!important] active:scale-[0.97] itemsToGetHoverEffect"
+            className="text-[#f31260!important] hover:bg-[inherit!important] active:scale-[0.97] itemsToGetHoverEffect"
           >
             No
           </Button>

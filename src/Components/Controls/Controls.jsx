@@ -16,6 +16,7 @@ export default () => {
     currentConversation,
     setCurrentConversation,
     setIsFeedbackModalOpen,
+    isDarkModeChecked,
   } = useContext(MyContext);
 
   const MODEL_NAME = import.meta.env.VITE_REACT_APP_MODEL_NAME;
@@ -110,7 +111,11 @@ export default () => {
   }
 
   return (
-    <div className="py-3 rounded-t-[8px] bottom-0 left-[50%] w-full bg-[#bfe5ff] translate-x-[-50%] fixed px-2 flex justify-center items-center">
+    <div
+      className={`py-3 rounded-t-[8px] bottom-0 left-[50%] w-full ${
+        isDarkModeChecked ? "bg-gray-900" : "bg-[#bfe5ff]"
+      } translate-x-[-50%] fixed px-2 flex justify-center items-center`}
+    >
       <form
         onSubmit={(e) => {
           e.preventDefault();

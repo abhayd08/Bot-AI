@@ -8,26 +8,62 @@ import Feedback from "../Feedback/Feedback";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 
 export default () => {
+  const [isDarkModeChecked, setIsDarkModeChecked] = useState(false);
+
   useEffect(() => {
-    if (window.innerWidth >= 1024) {
-      document.getElementsByClassName("mainContainer")[0].style.background =
-        "linear-gradient(to right, white, rgb(191 229 255))";
+    if (isDarkModeChecked) {
+      if (window.innerWidth >= 1024) {
+        document.getElementsByClassName("mainContainer")[0].style.background =
+          "linear-gradient(to right, black, black)";
+        document.body.style.color = "white";
+        document.body.style.backgroundColor = "rgb(17 24 39)";
+      } else {
+        document.getElementsByClassName("mainContainer")[0].style.background =
+          "linear-gradient(180deg, black, black)";
+        document.body.style.color = "white";
+        document.body.style.backgroundColor = "rgb(17 24 39)";
+      }
     } else {
-      document.getElementsByClassName("mainContainer")[0].style.background =
-        "linear-gradient(180deg, white, rgb(191 229 255))";
+      if (window.innerWidth >= 1024) {
+        document.getElementsByClassName("mainContainer")[0].style.background =
+          "linear-gradient(to right, white, rgb(191 229 255))";
+        document.body.style.color = "black";
+        document.body.style.backgroundColor = "white";
+      } else {
+        document.getElementsByClassName("mainContainer")[0].style.background =
+          "linear-gradient(180deg, white, rgb(191 229 255))";
+        document.body.style.color = "black";
+        document.body.style.backgroundColor = "white";
+      }
     }
   }, []);
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
+    if (isDarkModeChecked) {
+      if (window.innerWidth >= 1024) {
+        document.getElementsByClassName("mainContainer")[0].style.background =
+          "linear-gradient(to right, black, black)";
+        document.body.style.color = "white";
+        document.body.style.backgroundColor = "rgb(17 24 39)";
+      } else {
+        document.getElementsByClassName("mainContainer")[0].style.background =
+          "linear-gradient(180deg, black, black)";
+        document.body.style.color = "white";
+        document.body.style.backgroundColor = "rgb(17 24 39)";
+      }
+    } else {
       if (window.innerWidth >= 1024) {
         document.getElementsByClassName("mainContainer")[0].style.background =
           "linear-gradient(to right, white, rgb(191 229 255))";
+        document.body.style.color = "black";
+        document.body.style.backgroundColor = "white";
       } else {
         document.getElementsByClassName("mainContainer")[0].style.background =
           "linear-gradient(180deg, white, rgb(191 229 255))";
+        document.body.style.color = "black";
+        document.body.style.backgroundColor = "white";
       }
-    });
+    }
   });
 
   const [question, setQuestion] = useState("");
@@ -47,7 +83,7 @@ export default () => {
   useEffect(() => {
     localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
   }, [chatHistory]);
-
+  console.log(isDarkModeChecked);
   return (
     <MyContext.Provider
       value={{
@@ -63,6 +99,8 @@ export default () => {
         setIsFeedbackModalOpen,
         isConfirmationModalOpen,
         setIsConfirmationModalOpen,
+        isDarkModeChecked,
+        setIsDarkModeChecked,
       }}
     >
       <div

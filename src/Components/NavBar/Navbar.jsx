@@ -9,10 +9,15 @@ const Navbar = () => {
     setToShowPreviousConversations,
     setIsFeedbackModalOpen,
     setIsConfirmationModalOpen,
+    isDarkModeChecked,
   } = useContext(MyContext);
 
   return (
-    <nav className="hidden pb-[130px] xl:pb-[75px] max-h-[100vh] overflow-y-auto lg:flex flex-col navbar bg-white w-[270px] min-w-[270px]">
+    <nav
+      className={`hidden pb-[130px] xl:pb-[75px] max-h-[100vh] overflow-y-auto lg:flex flex-col navbar ${
+        isDarkModeChecked ? "bg-gray-950" : "bg-white"
+      } w-[270px] min-w-[270px]`}
+    >
       <div className="flex flex-col gap-[11px] items-center">
         <div
           onClick={() => {
@@ -24,7 +29,7 @@ const Navbar = () => {
               setIsConfirmationModalOpen(false);
             }
           }}
-          className="bg-gradient-to-r from-[#2aa8ff] to-white rounded-[10px] w-[97%] active:scale-[0.97] itemsToGetBackgroundEffect text-black hover:text-white hover:from-[white] cursor-pointer py-[5px] flex justify-between gap-[22px] px-2.5 items-center"
+          className="bg-gradient-to-r from-[#2aa8ff] to-white rounded-[10px] mt-0.5 w-[97%] active:scale-[0.97] itemsToGetBackgroundEffect text-black hover:text-white hover:from-[white] cursor-pointer py-[5px] flex justify-between gap-[22px] px-2.5 items-center"
         >
           <img
             src="/assets/logo1.png"

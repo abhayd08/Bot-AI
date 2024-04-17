@@ -24,7 +24,7 @@ This project aims to create an interactive chatbot application where users can e
 
 ### Theme
 
-- I selected a specific theme for the application to create a consistent look and feel across all components. The theme enhances readability, usability, and overall user experience.
+- I've implemented both light and dark themes in the application to ensure a consistent look and feel across all components. This approach enhances readability, usability, and the overall user experience. Users have the flexibility to switch between themes at any time.
 
 #
 
