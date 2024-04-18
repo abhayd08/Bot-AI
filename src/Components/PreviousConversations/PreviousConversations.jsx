@@ -109,8 +109,10 @@ export default () => {
   }, [filteredChatHistory]);
 
   return (
-    <div className="max-h-[100vh] overflow-y-auto pt-[20px] xl:pt-0 pb-[110px] lg:pb-[25px] w-full">
-      <div className="hidden lg:flex items-center px-2 py-[8px] mb-[20px] lg:px-4 justify-between gap-10">
+    <div className="max-h-[100vh] overflow-y-auto pt-[20px] mt-[86px] lg:mt-[66px] lg:pt-[20px] pb-[110px] lg:pb-[25px] w-full">
+      <div
+        className={`hidden fixed top-0 lg:flex w-[-webkit-fill-available] items-center px-2 py-[8px] z-10 lg:px-4 justify-between gap-10`}
+      >
         <a
           href="/"
           className="text-[28px] leading-[32.17px] font-bold text-[#2aa8ff]"
@@ -285,7 +287,10 @@ export default () => {
                 />
                 <div className="flex flex-col gap-1">
                   <span className="font-semibold text-[18px]">Bot AI</span>
-                  <span className="ml-[0.05rem]">{convo.answer}</span>
+                  <div
+                    className="ml-[0.05rem]"
+                    dangerouslySetInnerHTML={{ __html: convo.answer }}
+                  ></div>
                   <div
                     className={`text-[12px] ${
                       isDarkModeChecked ? "text-gray-400" : "text-gray-800"

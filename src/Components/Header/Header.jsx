@@ -95,7 +95,7 @@ export default () => {
 
   return (
     <div
-      className={`px-2 py-4 lg:hidden flex items-center ${
+      className={`px-2 py-4 lg:hidden fixed top-0 w-[-webkit-fill-available] flex items-center ${
         isDarkModeChecked ? "bg-black" : ""
       } gap-3.5`}
     >

@@ -64,8 +64,8 @@ export default () => {
   } = useContext(MyContext);
 
   return (
-    <div className="w-full pb-[130px] xl:pb-[25px] max-h-[100vh] pt-[20px] xl:pt-0 overflow-y-auto px-2 flex flex-col">
-      <div className="hidden lg:flex items-center lg:px-2 py-[8px] mb-[42px] justify-between gap-10">
+    <div className="w-full pb-[130px] lg:pb-[25px] max-h-[100vh] pt-[20px] mt-[86px] lg:mt-[66px] lg:pt-[20px] overflow-y-auto px-2 flex flex-col">
+      <div className="hidden fixed top-0 lg:flex w-[-webkit-fill-available] items-center lg:px-2 py-[8px] mb-[42px] justify-between gap-10">
         <a
           href="/"
           className="cursor-pointer text-[28px] leading-[32.17px] font-bold text-[#2aa8ff]"
@@ -138,7 +138,10 @@ export default () => {
                   }}
                 >
                   <span className="font-semibold text-[18px]">Bot AI</span>
-                  <span className="ml-[0.05rem]">{convo.answer}</span>
+                  <div
+                    className="ml-[0.05rem]"
+                    dangerouslySetInnerHTML={{ __html: convo.answer }}
+                  ></div>
                   <div
                     className={`text-[12px] ${
                       isDarkModeChecked ? "text-gray-400" : "text-gray-800"

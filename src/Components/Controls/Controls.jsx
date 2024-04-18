@@ -8,6 +8,7 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import { enqueueSnackbar } from "notistack";
 import { CircularProgress } from "@mui/material";
+import markdownit from "markdown-it";
 
 export default () => {
   const {
@@ -18,6 +19,12 @@ export default () => {
     setIsFeedbackModalOpen,
     isDarkModeChecked,
   } = useContext(MyContext);
+
+  const md = markdownit({
+    html: true,
+    linkify: true,
+    typographer: true,
+  });
 
   const MODEL_NAME = import.meta.env.VITE_REACT_APP_MODEL_NAME;
   const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
@@ -74,11 +81,12 @@ export default () => {
 
       const result = await chat.sendMessage(question.trim());
       const response = result.response;
+      const updatedResult = md.render(response.text());
       setCurrentConversation((prevConversation) => {
         const newConversation = [...prevConversation];
         newConversation[0].push({
           question: question,
-          answer: response.text(),
+          answer: updatedResult,
           id: uuidv4(),
           questionAskedTime: questionAskedTime,
           answerTime: new Date(),
