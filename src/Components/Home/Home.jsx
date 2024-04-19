@@ -16,24 +16,28 @@ export default () => {
         document.getElementsByClassName("mainContainer")[0].style.background =
           "linear-gradient(to right, black, black)";
         document.body.style.color = "white";
-        document.body.style.backgroundColor = "rgb(17 24 39)";
+        document.body.style.background =
+          "linear-gradient(to right, black, black)";
       } else {
         document.getElementsByClassName("mainContainer")[0].style.background =
           "linear-gradient(180deg, black, black)";
         document.body.style.color = "white";
-        document.body.style.backgroundColor = "rgb(17 24 39)";
+        document.body.style.background =
+          "linear-gradient(180deg, black, black)";
       }
     } else {
       if (window.innerWidth >= 1024) {
         document.getElementsByClassName("mainContainer")[0].style.background =
           "linear-gradient(to right, white, rgb(191 229 255))";
         document.body.style.color = "black";
-        document.body.style.backgroundColor = "white";
+        document.body.style.background =
+          "linear-gradient(to right, white, rgb(191 229 255))";
       } else {
         document.getElementsByClassName("mainContainer")[0].style.background =
           "linear-gradient(180deg, white, rgb(191 229 255))";
         document.body.style.color = "black";
-        document.body.style.backgroundColor = "white";
+        document.body.style.background =
+          "linear-gradient(180deg, white, rgb(191 229 255))";
       }
     }
   }, []);
@@ -44,24 +48,28 @@ export default () => {
         document.getElementsByClassName("mainContainer")[0].style.background =
           "linear-gradient(to right, black, black)";
         document.body.style.color = "white";
-        document.body.style.backgroundColor = "rgb(17 24 39)";
+        document.body.style.background =
+          "linear-gradient(to right, black, black)";
       } else {
         document.getElementsByClassName("mainContainer")[0].style.background =
           "linear-gradient(180deg, black, black)";
         document.body.style.color = "white";
-        document.body.style.backgroundColor = "rgb(17 24 39)";
+        document.body.style.background =
+          "linear-gradient(180deg, black, black)";
       }
     } else {
       if (window.innerWidth >= 1024) {
         document.getElementsByClassName("mainContainer")[0].style.background =
           "linear-gradient(to right, white, rgb(191 229 255))";
         document.body.style.color = "black";
-        document.body.style.backgroundColor = "white";
+        document.body.style.background =
+          "linear-gradient(to right, white, rgb(191 229 255))";
       } else {
         document.getElementsByClassName("mainContainer")[0].style.background =
           "linear-gradient(180deg, white, rgb(191 229 255))";
         document.body.style.color = "black";
-        document.body.style.backgroundColor = "white";
+        document.body.style.background =
+          "linear-gradient(180deg, white, rgb(191 229 255))";
       }
     }
   });
@@ -70,7 +78,7 @@ export default () => {
   const [currentConversation, setCurrentConversation] = useState([[]]);
   const [chatHistory, setChatHistory] = useState([]);
   const [toShowPreviousConversations, setToShowPreviousConversations] =
-    useState(false);
+    useState(true);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
 
@@ -106,12 +114,12 @@ export default () => {
       <div
         className={`${
           toShowPreviousConversations
-            ? "h-[calc(100vh-52px)]"
-            : "h-[calc(100vh-115px)] xl:h-[calc(100vh-60px)]"
+            ? "h-[calc(100vh-56px)] max-h-[calc(100vh-56px)]"
+            : "h-[calc(100vh-123px)] max-h-[calc(100vh-123px)] lg:h-[calc(100vh-66px)] lg:max-h-[calc(100vh-66px)]"
         }`}
       >
         <Header />
-        <div className="flex mainContainer h-full">
+        <div className="flex mainContainer h-[-webkit-fill-available]">
           <NavBar />
           {toShowPreviousConversations ? (
             <PreviousConversations />

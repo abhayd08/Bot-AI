@@ -136,18 +136,18 @@ export default () => {
             );
           }
         }}
-        className="flex w-full justify-center items-center gap-[24px] gap-y-[15px] flex-col xl:flex-row"
+        className="flex w-full justify-center items-center gap-[24px] gap-y-[15px] flex-col lg:flex-row"
       >
-        <input
+        <textarea
           type="text"
           required
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          className="w-[845px] text-black px-2 text-[15px] outline-0 max-w-[90vw] h-[41px] border-[0] ring-1 ring-[#2aa8ff] rounded-[10px] bg-white"
-        />
+          className="w-[845px] text-black px-2 text-[15px] outline-0 max-w-[94vw] min-h-[45px] overflow-hidden h-[45px] max-h-[60px] py-2 border-[0] ring-1 ring-[#2aa8ff] rounded-[10px] bg-white"
+        ></textarea>
         <div className="flex justify-center items-center gap-[24px]">
           <button
-            className={`askBtn active:scale-[0.96] ring-1 ring-[white] rounded-[10px] text-white itemsToGetBackgroundEffect border-0 outline-0 w-[73.82px] h-[42px] ${
+            className={`askBtn active:scale-[0.96] ring-1 ring-[white] rounded-[10px] text-white itemsToGetBackgroundEffect border-0 outline-0 w-[73.82px] h-[45px] ${
               askBtnContent !== "Ask"
                 ? "bg-[#f31260] cursor-default"
                 : "bg-[#2aa8ff]"
@@ -169,7 +169,7 @@ export default () => {
             }}
             className={`rounded-[10px] active:scale-[0.96] ${
               askBtnContent !== "Ask" ? "cursor-default" : ""
-            } saveBtn border-0 outline-0 ring-1 ring-[white] text-white itemsToGetBackgroundEffect cursor-pointer w-[73.82px] flex justify-center items-center h-[42px] bg-[#2aa8ff] text-center`}
+            } saveBtn border-0 outline-0 ring-1 ring-[white] text-white itemsToGetBackgroundEffect cursor-pointer w-[73.82px] flex justify-center items-center h-[45px] bg-[#2aa8ff] text-center`}
           >
             Save
           </button>

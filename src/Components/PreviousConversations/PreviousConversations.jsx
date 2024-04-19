@@ -109,7 +109,7 @@ export default () => {
   }, [filteredChatHistory]);
 
   return (
-    <div className="max-h-[100vh] overflow-y-auto pt-[20px] mt-[86px] lg:mt-[66px] lg:pt-[20px] pb-[110px] lg:pb-[25px] w-full">
+    <div className="overflow-y-auto pt-[20px] mt-[87px] lg:mt-[70px] pb-[150px] lg:pb-[120px] w-full">
       <div
         className={`hidden fixed top-0 lg:flex w-[-webkit-fill-available] items-center px-2 py-[8px] z-10 lg:px-4 justify-between gap-10`}
       >
@@ -187,10 +187,10 @@ export default () => {
           </button>
         )}
       </form>
-      <div className="mb-[55px]">
+      <div className="mb-[55px] flex flex-col gap-4">
         {itemsToShow?.[currentPage - 1]?.[1]?.[0]?.rating ? (
           <div
-            className={`flex mb-4 ${
+            className={`flex ${
               isDarkModeChecked ? "text-gray-400" : ""
             } items-center px-2 sm:px-4 font-medium`}
           >
@@ -213,7 +213,7 @@ export default () => {
         )}
 
         {itemsToShow?.[currentPage - 1]?.[1]?.[0].feedback ? (
-          <div className="flex items-start px-2 mb-4 sm:px-4">
+          <div className="flex items-start px-2 sm:px-4">
             <span
               className={`font-medium ${
                 isDarkModeChecked ? "text-gray-400" : ""
@@ -248,86 +248,89 @@ export default () => {
           ""
         )}
       </div>
-      {itemsToShow?.[currentPage - 1]?.[0]?.length > 0 ? (
-        itemsToShow[currentPage - 1][0].map((convo) => {
-          return (
-            <div
-              key={convo.id}
-              className="px-4 lg:px-[50px] flex flex-col gap-8 my-8"
-            >
-              <div className="flex gap-4">
-                <img
-                  src="/assets/user.png"
-                  className="w-6 h-6 mt-[0.075rem]"
-                  alt="User"
-                />
-                <div className="flex flex-col gap-1">
-                  <span className="font-semibold text-[18px]">You</span>
-                  <span className="ml-[0.07rem]">{convo.question}</span>
-                  <div
-                    className={`text-[12px] ${
-                      isDarkModeChecked ? "text-gray-400" : "text-gray-800"
-                    } ml-[0.06rem] mt-3.5 font-[var(--font-secondary)]`}
-                  >
-                    {new Date(convo.questionAskedTime)?.toLocaleString(
-                      "en-US",
-                      {
+      <div className="flex flex-col gap-8">
+        {itemsToShow?.[currentPage - 1]?.[0]?.length > 0 ? (
+          itemsToShow[currentPage - 1][0].map((convo) => {
+            return (
+              <div
+                key={convo.id}
+                className="px-4 lg:px-[50px] flex flex-col gap-8"
+              >
+                <div className="flex gap-4">
+                  <img
+                    src="/assets/user.png"
+                    className="w-6 h-6 mt-[0.075rem]"
+                    alt="User"
+                  />
+                  <div className="flex flex-col gap-1">
+                    <span className="font-semibold text-[18px]">You</span>
+                    <span className="ml-[0.02rem]">{convo.question}</span>
+                    <div
+                      className={`text-[12px] ${
+                        isDarkModeChecked ? "text-gray-400" : "text-gray-800"
+                      } ml-[0.02rem] mt-3.5 font-[var(--font-secondary)]`}
+                    >
+                      {new Date(convo.questionAskedTime)?.toLocaleString(
+                        "en-US",
+                        {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        }
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <img
+                    src="/assets/logo1.png"
+                    className="w-6 h-6 mt-[0.242rem]"
+                    alt="User"
+                  />
+                  <div className="flex flex-col gap-1">
+                    <span className="font-semibold text-[18px]">Bot AI</span>
+                    <div
+                      className="ml-[0.01rem]"
+                      dangerouslySetInnerHTML={{ __html: convo.answer }}
+                    ></div>
+                    <div
+                      className={`text-[12px] ${
+                        isDarkModeChecked ? "text-gray-400" : "text-gray-800"
+                      } flex items-center gap-3 ml-[0.01rem] mt-3.5 font-[var(--font-secondary)]`}
+                    >
+                      {new Date(convo.answerTime)?.toLocaleString("en-US", {
                         hour: "2-digit",
                         minute: "2-digit",
-                      }
-                    )}
+                      })}
+                      {convo.liked === true ? (
+                        <AiFillLike className="w-4 h-4 text-green-500" />
+                      ) : convo.liked === false ? (
+                        <AiFillDislike className="w-4 h-4 text-[#f31260]" />
+                      ) : (
+                        ""
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="flex gap-4">
-                <img
-                  src="/assets/logo1.png"
-                  className="w-6 h-6 mt-[0.242rem]"
-                  alt="User"
-                />
-                <div className="flex flex-col gap-1">
-                  <span className="font-semibold text-[18px]">Bot AI</span>
-                  <div
-                    className="ml-[0.05rem]"
-                    dangerouslySetInnerHTML={{ __html: convo.answer }}
-                  ></div>
-                  <div
-                    className={`text-[12px] ${
-                      isDarkModeChecked ? "text-gray-400" : "text-gray-800"
-                    } flex items-center gap-3 ml-[0.05rem] mt-3.5 font-[var(--font-secondary)]`}
-                  >
-                    {new Date(convo.answerTime)?.toLocaleString("en-US", {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                    {convo.liked === true ? (
-                      <AiFillLike className="w-4 h-4 text-green-500" />
-                    ) : convo.liked === false ? (
-                      <AiFillDislike className="w-4 h-4 text-[#f31260]" />
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        })
-      ) : (
-        <h5 className="px-2 lg:px-4 text-[lg] text[17px]">
-          {" "}
-          Oops! We couldn't find any previous conversations.
-        </h5>
-      )}
+            );
+          })
+        ) : (
+          <h5 className="px-2 lg:px-4 text-[lg] text[17px]">
+            {" "}
+            Oops! We couldn't find any previous conversations.
+          </h5>
+        )}
+      </div>
       <div
-        className={`fixed bottom-0 py-3 px-2 left-[50%] translate-x-[-50%] flex justify-center items-center flex-wrap ${
-          isDarkModeChecked ? "bg-gray-600" : "bg-[#bfe5ff]"
+        className={`fixed bottom-0 py-3 px-2 left-[50%] translate-x-[-50%] overflow-x-auto flex justify-center items-center flex-wrap ${
+          isDarkModeChecked ? "bg-gray-900" : "bg-[#bfe5ff]"
         } w-full`}
       >
         <Pagination
           onChange={(e, val) => setCurrentPage(Number(val))}
           page={currentPage}
           color="primary"
+          className={`${isDarkModeChecked ? "textWhite" : ""}`}
           count={numberOfAvailableConversations}
         />
       </div>
