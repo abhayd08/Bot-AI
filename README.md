@@ -30,7 +30,7 @@ This project aims to create an interactive chatbot application where users can e
 
 ## Technologies
 
-#### Frontend: HTML, CSS, JavaScript, React.js, Tailwind CSS, MUI, React Icons, Gemini
+#### Frontend: HTML, CSS, JavaScript, React.js, Tailwind CSS, MUI, React Icons, Gemini, Markdown-It
 
 #
 

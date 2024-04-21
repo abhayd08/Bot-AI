@@ -95,7 +95,7 @@ export default () => {
 
   return (
     <div
-      className={`px-2 py-4 lg:hidden fixed top-0 w-[-webkit-fill-available] flex items-center ${
+      className={`px-2 py-5 lg:px-4 lg:hidden fixed top-0 w-[-webkit-fill-available] flex items-center ${
         isDarkModeChecked ? "bg-black" : ""
       } gap-3.5`}
     >
@@ -114,7 +114,6 @@ export default () => {
               <MaterialUISwitch
                 checked={isDarkModeChecked}
                 onChange={(e) => setIsDarkModeChecked(e.target.checked)}
-                sx={{ m: 1 }}
               />
             }
           />
@@ -129,12 +128,22 @@ export default () => {
           <div className="flex flex-col gap-[11px] items-center">
             <div
               onClick={() => {
-                if (currentConversation?.[0]?.length > 0) {
-                  setIsConfirmationModalOpen(true);
+                if (
+                  document
+                    .getElementsByClassName("askBtn")[0]
+                    ?.hasAttribute("disabled")
+                ) {
+                  enqueueSnackbar("Kindly await the arrival of the response.", {
+                    variant: "info",
+                  });
                 } else {
-                  setToShowPreviousConversations(false);
-                  setIsFeedbackModalOpen(false);
-                  setIsConfirmationModalOpen(false);
+                  if (currentConversation?.[0]?.length > 0) {
+                    setIsConfirmationModalOpen(true);
+                  } else {
+                    setToShowPreviousConversations(false);
+                    setIsFeedbackModalOpen(false);
+                    setIsConfirmationModalOpen(false);
+                  }
                 }
               }}
               className="bg-gradient-to-r from-[#2aa8ff] to-white rounded-[10px] mt-0.5 w-[97%] active:scale-[0.97] itemsToGetBackgroundEffect text-black hover:text-white hover:from-[white] cursor-pointer py-[5px] flex justify-between gap-[22px] px-2.5 items-center"
@@ -151,8 +160,14 @@ export default () => {
             </div>
             <div
               onClick={() => {
-                if (currentConversation?.[0]?.length > 0) {
-                  setIsConfirmationModalOpen(true);
+                if (
+                  document
+                    .getElementsByClassName("askBtn")[0]
+                    ?.hasAttribute("disabled")
+                ) {
+                  enqueueSnackbar("Kindly await the arrival of the response.", {
+                    variant: "info",
+                  });
                 } else {
                   if (toShowPreviousConversations === true) {
                     setToShowPreviousConversations(false);

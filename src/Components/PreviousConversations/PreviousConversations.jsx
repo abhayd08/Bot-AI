@@ -111,7 +111,7 @@ export default () => {
   return (
     <div className="overflow-y-auto pt-[20px] mt-[87px] lg:mt-[70px] pb-[150px] lg:pb-[120px] w-full">
       <div
-        className={`hidden fixed top-0 lg:flex w-[-webkit-fill-available] items-center px-2 py-[8px] z-10 lg:px-4 justify-between gap-10`}
+        className={`hidden fixed top-0 lg:flex w-[-webkit-fill-available] items-center px-2 py-5 z-10 lg:px-4 justify-between gap-10`}
       >
         <a
           href="/"
@@ -125,7 +125,6 @@ export default () => {
               <MaterialUISwitch
                 checked={isDarkModeChecked}
                 onChange={(e) => setIsDarkModeChecked(e.target.checked)}
-                sx={{ m: 1 }}
               />
             }
           />
@@ -264,7 +263,16 @@ export default () => {
                   />
                   <div className="flex flex-col gap-1">
                     <span className="font-semibold text-[18px]">You</span>
-                    <span className="ml-[0.02rem]">{convo.question}</span>
+                    <h6 className="ml-[0.02rem]">
+                      {convo.question.split("\n").map((text, index) => {
+                        return (
+                          <div key={index}>
+                            <span>{text}</span>
+                            <br />
+                          </div>
+                        );
+                      })}
+                    </h6>
                     <div
                       className={`text-[12px] ${
                         isDarkModeChecked ? "text-gray-400" : "text-gray-800"
@@ -323,7 +331,7 @@ export default () => {
       </div>
       <div
         className={`fixed bottom-0 py-3 px-2 left-[50%] translate-x-[-50%] overflow-x-auto flex justify-center items-center flex-wrap ${
-          isDarkModeChecked ? "bg-gray-900" : "bg-[#bfe5ff]"
+          isDarkModeChecked ? "bg-gray-950" : "bg-[#bfe5ff]"
         } w-full`}
       >
         <Pagination

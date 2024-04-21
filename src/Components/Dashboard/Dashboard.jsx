@@ -1,5 +1,5 @@
 import Controls from "../Controls/Controls";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import MyContext from "../Context";
 import { AiFillLike } from "react-icons/ai";
 import { AiFillDislike } from "react-icons/ai";
@@ -7,6 +7,36 @@ import { styled } from "@mui/material/styles";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
+import { v4 as uuidv4 } from "uuid";
+import FAQ from "../FAQ/FAQ";
+
+const FAQs = [
+  {
+    question: "Can you craft a personalized self-care routine for me?",
+    description: "Make a self-care routine",
+    subDescription: "specifically for me",
+    id: uuidv4(),
+  },
+  {
+    question: "Could give me some suggestions to overcome my procrastination?",
+    description: "Overcome procrastination",
+    subDescription: "give me tips",
+    id: uuidv4(),
+  },
+  {
+    question: 'Can you explain the concept of "nostalgia" to a kindergartener?',
+    description: "Explain nostalgia",
+    subDescription: "to a kindergartener",
+    id: uuidv4(),
+  },
+  {
+    question:
+      "Can you recommend me some appetizer options to bring to a potluck?",
+    description: "Recommend dishes",
+    subDescription: "to bring to a potluck",
+    id: uuidv4(),
+  },
+];
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -64,8 +94,8 @@ export default () => {
   } = useContext(MyContext);
 
   return (
-    <div className="w-full pt-[20px] mt-[87px] pb-[105px] lg:pb-[120px] lg:mt-[70px] overflow-y-auto px-2 flex flex-col">
-      <div className="hidden fixed top-0 lg:flex w-[-webkit-fill-available] items-center lg:px-2 py-[8px] mb-[42px] justify-between gap-10">
+    <div className="w-full pt-[20px] mt-[87px] pb-[105px] lg:pb-[120px] lg:mt-[70px] overflow-y-auto flex flex-col">
+      <div className="hidden fixed top-0 lg:flex w-[-webkit-fill-available] items-center px-2 lg:px-4 py-5 mb-[42px] justify-between gap-10">
         <a
           href="/"
           className="cursor-pointer text-[28px] leading-[32.17px] font-bold text-[#2aa8ff]"
@@ -78,7 +108,6 @@ export default () => {
               <MaterialUISwitch
                 checked={isDarkModeChecked}
                 onChange={(e) => setIsDarkModeChecked(e.target.checked)}
-                sx={{ m: 1 }}
               />
             }
           />
@@ -90,7 +119,7 @@ export default () => {
             return (
               <div
                 key={convo.id}
-                className="px-1 lg:px-[50px] flex flex-col gap-8"
+                className="px-2 lg:px-[50px] flex flex-col gap-8"
               >
                 <div className="flex gap-4">
                   <img
@@ -100,7 +129,16 @@ export default () => {
                   />
                   <div className="flex flex-col gap-1">
                     <span className="font-semibold text-[18px]">You</span>
-                    <span className="ml-[0.02rem]">{convo.question}</span>
+                    <div className="ml-[0.02rem]">
+                      {convo.question.split("\n").map((text, index) => {
+                        return (
+                          <div key={index}>
+                            <span>{text}</span>
+                            <br />
+                          </div>
+                        );
+                      })}
+                    </div>
                     <div
                       className={`text-[12px] ${
                         isDarkModeChecked ? "text-gray-400" : "text-gray-800"
@@ -197,15 +235,29 @@ export default () => {
             );
           })
         ) : (
-          <div className="flex mt-[80px] flex-col justify-center items-center gap-3">
-            <h3 className="text-center font-medium text-[28px] tracking-wide leading-[38px]">
-              How Can I Help You Today?
-            </h3>
-            <img
-              src="/assets/logo2.png"
-              className="w-[65.3px] mr-2"
-              alt="Logo"
-            />
+          <div className="flex px-2 lg:px-4 mt-[80px] flex-col justify-center items-center gap-24">
+            <div className="flex flex-col justify-center items-center gap-3">
+              <h3 className="text-center font-medium text-[28px] tracking-wide leading-[38px]">
+                How Can I Help You Today?
+              </h3>
+              <img
+                src="/assets/logo2.png"
+                className="w-[65.3px] mr-2"
+                alt="Logo"
+              />
+            </div>
+            <div className="grid place-items-center gap-x-10 gap-y-5 grid-cols-1 lg:grid-cols-2">
+              {FAQs.map((item) => {
+                return (
+                  <FAQ
+                    key={item.key}
+                    question={item.question}
+                    description={item.description}
+                    subDescription={item.subDescription}
+                  />
+                );
+              })}
+            </div>
           </div>
         )}
       </div>
