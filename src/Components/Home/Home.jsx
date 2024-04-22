@@ -199,7 +199,6 @@ export default () => {
   useEffect(() => {
     localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
   }, [chatHistory]);
-  console.log(isDarkModeChecked);
   return (
     <MyContext.Provider
       value={{
@@ -230,7 +229,7 @@ export default () => {
         } `}
       >
         <Header />
-        <div className="flex mainContainer h-[-webkit-fill-available]">
+        <div className="flex transition-all mainContainer h-[-webkit-fill-available]">
           <NavBar />
           {toShowPreviousConversations ? (
             <PreviousConversations />

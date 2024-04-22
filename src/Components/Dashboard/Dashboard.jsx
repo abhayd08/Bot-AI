@@ -7,7 +7,6 @@ import { styled } from "@mui/material/styles";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
-import { v4 as uuidv4 } from "uuid";
 import FAQ from "../FAQ/FAQ";
 
 const FAQs = [
@@ -15,26 +14,26 @@ const FAQs = [
     question: "Can you craft a personalized self-care routine for me?",
     description: "Make a self-care routine",
     subDescription: "specifically for me",
-    id: uuidv4(),
+    id: "FAQ1",
   },
   {
     question: "Could give me some suggestions to overcome my procrastination?",
     description: "Overcome procrastination",
     subDescription: "give me tips",
-    id: uuidv4(),
+    id: "FAQ2",
   },
   {
     question: 'Can you explain the concept of "nostalgia" to a kindergartener?',
     description: "Explain nostalgia",
     subDescription: "to a kindergartener",
-    id: uuidv4(),
+    id: "FAQ3",
   },
   {
     question:
       "Can you recommend me some appetizer options to bring to a potluck?",
     description: "Recommend dishes",
     subDescription: "to bring to a potluck",
-    id: uuidv4(),
+    id: "FAQ4",
   },
 ];
 
@@ -246,11 +245,11 @@ export default () => {
                 alt="Logo"
               />
             </div>
-            <div className="grid place-items-center gap-x-10 gap-y-5 grid-cols-1 lg:grid-cols-2">
+            <div className="grid place-items-center gap-x-10 gap-y-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               {FAQs.map((item) => {
                 return (
                   <FAQ
-                    key={item.key}
+                    key={item.id}
                     question={item.question}
                     description={item.description}
                     subDescription={item.subDescription}
