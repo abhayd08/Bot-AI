@@ -93,8 +93,8 @@ export default () => {
   } = useContext(MyContext);
 
   return (
-    <div className="w-full pt-[20px] mt-[87px] pb-[105px] lg:pb-[120px] lg:mt-[70px] overflow-y-auto flex flex-col">
-      <div className="hidden fixed top-0 lg:flex w-[-webkit-fill-available] items-center px-2 lg:px-4 py-5 mb-[42px] justify-between gap-10">
+    <div className="w-full pt-[20px] pb-[50px] mb-[121px] lg:mb-[65px] mt-[88px] lg:mt-[74px] overflow-y-auto flex flex-col">
+      <div className="hidden z-10 fixed top-0 lg:flex w-[-webkit-fill-available] items-center px-2 lg:px-4 py-5 justify-between gap-10">
         <a
           href="/"
           className="cursor-pointer text-[28px] leading-[32.17px] font-bold text-[#2aa8ff]"
@@ -118,7 +118,7 @@ export default () => {
             return (
               <div
                 key={convo.id}
-                className="px-2 lg:px-[50px] flex flex-col gap-8"
+                className="px-2.5 lg:px-[50px] flex flex-col gap-8"
               >
                 <div className="flex gap-4">
                   <img
@@ -234,9 +234,9 @@ export default () => {
             );
           })
         ) : (
-          <div className="flex px-2 lg:px-4 mt-[80px] flex-col justify-center items-center gap-24">
+          <div className="flex px-2 lg:h-[calc(100vh-260px)] lg:px-4 mt-[80px] flex-col justify-between gap-24 items-center">
             <div className="flex flex-col justify-center items-center gap-3">
-              <h3 className="text-center font-medium text-[28px] tracking-wide leading-[38px]">
+              <h3 className="text-center font-medium text-[28px] tracking-wide leading-[42px]">
                 How Can I Help You Today?
               </h3>
               <img
@@ -245,7 +245,7 @@ export default () => {
                 alt="Logo"
               />
             </div>
-            <div className="grid place-items-center gap-x-10 gap-y-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            <div className="grid place-items-center gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               {FAQs.map((item) => {
                 return (
                   <FAQ

@@ -82,6 +82,40 @@ export default () => {
     }
   });
 
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (isDarkModeChecked) {
+        if (window.innerWidth >= 1024) {
+          document.getElementsByClassName("mainContainer")[0].style.background =
+            "linear-gradient(to right, black, black)";
+          document.body.style.color = "white";
+          document.body.style.background =
+            "linear-gradient(to right, black, black)";
+        } else {
+          document.getElementsByClassName("mainContainer")[0].style.background =
+            "linear-gradient(180deg, black, black)";
+          document.body.style.color = "white";
+          document.body.style.background =
+            "linear-gradient(180deg, black, black)";
+        }
+      } else {
+        if (window.innerWidth >= 1024) {
+          document.getElementsByClassName("mainContainer")[0].style.background =
+            "linear-gradient(to right, white, rgb(191 229 255))";
+          document.body.style.color = "black";
+          document.body.style.background =
+            "linear-gradient(to right, white, rgb(191 229 255))";
+        } else {
+          document.getElementsByClassName("mainContainer")[0].style.background =
+            "linear-gradient(180deg, white, rgb(191 229 255))";
+          document.body.style.color = "black";
+          document.body.style.background =
+            "linear-gradient(180deg, white, rgb(191 229 255))";
+        }
+      }
+    });
+  });
+
   const [question, setQuestion] = useState("");
   const [currentConversation, setCurrentConversation] = useState([[]]);
   const [chatHistory, setChatHistory] = useState([]);
@@ -221,13 +255,7 @@ export default () => {
         runChat,
       }}
     >
-      <div
-        className={`${
-          toShowPreviousConversations
-            ? "h-[calc(100vh-56px)] max-h-[calc(100vh-56px)]"
-            : "h-[calc(100vh-123px)] max-h-[calc(100vh-123px)] lg:h-[calc(100vh-66px)] lg:max-h-[calc(100vh-66px)]"
-        } `}
-      >
+      <div className={`h-screen`}>
         <Header />
         <div className="flex transition-all mainContainer h-[-webkit-fill-available]">
           <NavBar />

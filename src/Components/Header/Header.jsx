@@ -9,6 +9,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import { MdHistory } from "react-icons/md";
 import { IoIosBackspace } from "react-icons/io";
+import { enqueueSnackbar } from "notistack";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -100,8 +101,8 @@ export default () => {
 
   return (
     <div
-      className={`px-2 py-5 lg:px-4 lg:hidden fixed top-0 w-[-webkit-fill-available] flex items-center ${
-        isDarkModeChecked ? "bg-black" : ""
+      className={`px-2 py-5 lg:px-4 lg:hidden z-10 fixed top-0 w-full flex items-center ${
+        isDarkModeChecked ? "bg-gray-950" : "bg-[#F2FAFF]"
       } gap-3.5`}
     >
       <MenuIcon
@@ -149,11 +150,13 @@ export default () => {
                     if (currentConversation?.[0]?.length > 0) {
                       setIsConfirmationModalOpen(true);
                     } else {
+                      setQuestion("");
                       setToShowPreviousConversations(false);
                       setIsFeedbackModalOpen(false);
                       setIsConfirmationModalOpen(false);
                     }
                   }
+                  toggleDrawer(false)();
                 }}
                 className="bg-gradient-to-r from-[#2aa8ff] to-white rounded-[10px] mt-0.5 w-[97%] active:scale-[0.97] itemsToGetBackgroundEffect text-black hover:text-white hover:from-[white] cursor-pointer py-[5px] flex justify-between gap-[22px] px-2.5 items-center"
               >
@@ -187,6 +190,7 @@ export default () => {
                       setToShowPreviousConversations(true);
                     }
                   }
+                  toggleDrawer(false)();
                 }}
                 className={`w-[190px] flex justify-center items-center gap-2 active:scale-[0.97] cursor-pointer ring-1 itemsToGetHoverEffect ${
                   toShowPreviousConversations
@@ -217,6 +221,7 @@ export default () => {
                   setChatHistory([]);
                   setQuestion("");
                 }
+                toggleDrawer(false)();
               }}
               className={`w-[185px] active:scale-[0.97] mt-5 cursor-pointer itemsToGetHoverEffect text-[#f31260] ring-1 ring-[#f31260] hover:ring-[#2aa8ff] rounded-[10px] py-[10px] text-center text-[15px] font-bold leading-[18.38px]`}
             >

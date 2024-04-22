@@ -16,7 +16,7 @@ export default () => {
   return (
     <div
       className={`py-3 rounded-t-[8px] bottom-0 left-[50%] w-full ${
-        isDarkModeChecked ? "bg-gray-950" : "bg-[#bfe5ff]"
+        isDarkModeChecked ? "bg-gray-900" : "bg-[#bfe5ff]"
       } translate-x-[-50%] fixed px-2 flex justify-center items-center`}
     >
       <form

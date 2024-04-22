@@ -22,7 +22,9 @@ const Navbar = () => {
     <nav
       className={`hidden overflow-y-auto lg:flex flex-col navbar ${
         isDarkModeChecked ? "bg-gray-950" : "bg-white"
-      } w-[270px] min-w-[270px]`}
+      } w-[250px] ${
+        toShowPreviousConversations ? "mb-[56px]" : "mb-[65px]"
+      } min-w-[250px]`}
     >
       <div className="flex flex-col w-full h-[-webkit-fill-available] pb-[11px] justify-between items-center gap-2">
         <div className="flex flex-col w-full gap-[11px] items-center">
@@ -40,6 +42,7 @@ const Navbar = () => {
                 if (currentConversation?.[0]?.length > 0) {
                   setIsConfirmationModalOpen(true);
                 } else {
+                  setQuestion("");
                   setToShowPreviousConversations(false);
                   setIsFeedbackModalOpen(false);
                   setIsConfirmationModalOpen(false);

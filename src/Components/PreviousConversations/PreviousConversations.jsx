@@ -109,7 +109,7 @@ export default () => {
   }, [filteredChatHistory]);
 
   return (
-    <div className="overflow-y-auto pt-[20px] mt-[87px] lg:mt-[70px] pb-[150px] lg:pb-[120px] w-full">
+    <div className="overflow-y-auto pt-[20px] mt-[88px] lg:mt-[74px] mb-[56px] pb-[90px] sm:pb-[50px] w-full">
       <div
         className={`hidden fixed top-0 lg:flex w-[-webkit-fill-available] items-center px-2 py-5 z-10 lg:px-4 justify-between gap-10`}
       >
@@ -253,7 +253,7 @@ export default () => {
             return (
               <div
                 key={convo.id}
-                className="px-4 lg:px-[50px] flex flex-col gap-8"
+                className="px-2.5 lg:px-[50px] flex flex-col gap-8"
               >
                 <div className="flex gap-4">
                   <img
@@ -331,7 +331,7 @@ export default () => {
       </div>
       <div
         className={`fixed bottom-0 py-3 px-2 left-[50%] translate-x-[-50%] overflow-x-auto flex justify-center items-center flex-wrap ${
-          isDarkModeChecked ? "bg-gray-950" : "bg-[#bfe5ff]"
+          isDarkModeChecked ? "bg-gray-900" : "bg-[#bfe5ff]"
         } w-full`}
       >
         <Pagination
