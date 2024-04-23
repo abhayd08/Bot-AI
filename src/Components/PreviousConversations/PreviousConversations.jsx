@@ -294,10 +294,10 @@ export default () => {
                     className="w-6 h-6 mt-[0.242rem]"
                     alt="User"
                   />
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col gap-2">
                     <span className="font-semibold text-[18px]">Bot AI</span>
                     <div
-                      className="ml-[0.01rem]"
+                      className="ml-[0.01rem] flex flex-col gap-1.5"
                       dangerouslySetInnerHTML={{ __html: convo.answer }}
                     ></div>
                     <div

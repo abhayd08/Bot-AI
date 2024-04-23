@@ -157,7 +157,7 @@ export default () => {
                     alt="User"
                   />
                   <div
-                    className="flex flex-col gap-1 pb-1"
+                    className="flex flex-col gap-2"
                     onMouseEnter={() => {
                       document.getElementsByClassName("likeBtn")[
                         currentConversation[0].indexOf(convo)
@@ -177,7 +177,7 @@ export default () => {
                   >
                     <span className="font-semibold text-[18px]">Bot AI</span>
                     <div
-                      className="ml-[0.01rem]"
+                      className="ml-[0.01rem] flex flex-col gap-1.5"
                       dangerouslySetInnerHTML={{ __html: convo.answer }}
                     ></div>
                     <div

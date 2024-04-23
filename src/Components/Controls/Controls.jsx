@@ -42,7 +42,7 @@ export default () => {
         ></textarea>
         <div className="flex justify-center items-center gap-[24px]">
           <button
-            className={`askBtn active:scale-[0.96] ring-1 ring-[white] rounded-[10px] text-white itemsToGetBackgroundEffect border-0 outline-0 w-[73.82px] h-[41px] ${
+            className={`askBtn active:scale-[0.97] ring-1 ring-[white] rounded-[10px] text-white itemsToGetBackgroundEffect border-0 outline-0 w-[73.82px] h-[41px] ${
               askBtnContent !== "Ask"
                 ? "bg-[#f31260] cursor-default"
                 : "bg-[#2aa8ff]"
@@ -62,7 +62,7 @@ export default () => {
                 });
               }
             }}
-            className={`rounded-[10px] active:scale-[0.96] ${
+            className={`rounded-[10px] active:scale-[0.97] ${
               askBtnContent !== "Ask" ? "cursor-default" : ""
             } saveBtn border-0 outline-0 ring-1 ring-[white] text-white itemsToGetBackgroundEffect cursor-pointer w-[73.82px] flex justify-center items-center h-[41px] bg-[#2aa8ff] text-center`}
           >

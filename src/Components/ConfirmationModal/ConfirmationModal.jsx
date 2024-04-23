@@ -29,11 +29,7 @@ export default function BasicModal() {
   const handleClose = () => setIsConfirmationModalOpen(false);
 
   return (
-    <Modal
-      open={isConfirmationModalOpen}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
+    <Modal open={isConfirmationModalOpen} aria-labelledby="confirmation-modal">
       <Box
         sx={style}
         className="border-0 outline-0 max-h-[90vh] w-[550px] max-w-[94vw] overflow-y-auto"
@@ -45,7 +41,11 @@ export default function BasicModal() {
             component="h2"
           >
             Would you like to save the{" "}
-            <span className="text-[#28a5ff]"> current conversation?</span>
+            <span className="text-[#28a5ff] font-medium">
+              {" "}
+              current conversation
+            </span>
+            ?
           </Typography>
         </div>
         <div className="flex justify-end items-center mt-10 gap-0.5">
@@ -61,7 +61,7 @@ export default function BasicModal() {
               fontSize: "16px",
               borderRadius: "10px",
             }}
-            className="text-[#f31260!important] hover:bg-[inherit!important] active:scale-[0.97] itemsToGetHoverEffect"
+            className="text-[#f31260!important] hover:bg-[inherit!important] transition-all"
           >
             No
           </Button>
@@ -79,7 +79,7 @@ export default function BasicModal() {
               setIsFeedbackModalOpen(true);
             }}
             variant="contained"
-            className="font-[600!important] active:scale-[0.97] itemsToGetBackgroundEffect"
+            className="font-[600!important] active:scale-[0.98] itemsToGetBackgroundEffect"
           >
             Yes
           </Button>

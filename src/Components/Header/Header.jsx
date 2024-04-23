@@ -158,7 +158,7 @@ export default () => {
                   }
                   toggleDrawer(false)();
                 }}
-                className="bg-gradient-to-r from-[#2aa8ff] to-white rounded-[10px] mt-0.5 w-[97%] active:scale-[0.97] itemsToGetBackgroundEffect text-black hover:text-white hover:from-[white] cursor-pointer py-[5px] flex justify-between gap-[22px] px-2.5 items-center"
+                className="bg-gradient-to-r from-[#2aa8ff] to-white rounded-[10px] mt-0.5 w-[97%] active:scale-[0.98] itemsToGetBackgroundEffect text-black hover:text-white hover:from-[white] cursor-pointer py-[5px] flex justify-between gap-[22px] px-2.5 items-center"
               >
                 <img
                   src="/assets/logo1.png"
@@ -192,7 +192,7 @@ export default () => {
                   }
                   toggleDrawer(false)();
                 }}
-                className={`w-[190px] flex justify-center items-center gap-2 active:scale-[0.97] cursor-pointer ring-1 itemsToGetHoverEffect ${
+                className={`w-[190px] flex justify-center items-center gap-2 active:scale-[0.98] cursor-pointer ring-1 itemsToGetHoverEffect ${
                   toShowPreviousConversations
                     ? "text-[#f31260] ring-[#f31260] text-danger hover:ring-[#2aa8ff]"
                     : "ring-[#2aa8ff] text-[#2aa8ff] hover:ring-[#f31260] hover:text-[#f31260!important]"
@@ -223,7 +223,7 @@ export default () => {
                 }
                 toggleDrawer(false)();
               }}
-              className={`w-[185px] active:scale-[0.97] mt-5 cursor-pointer itemsToGetHoverEffect text-[#f31260] ring-1 ring-[#f31260] hover:ring-[#2aa8ff] rounded-[10px] py-[10px] text-center text-[15px] font-bold leading-[18.38px]`}
+              className={`w-[185px] active:scale-[0.98] mt-5 cursor-pointer itemsToGetHoverEffect text-[#f31260] ring-1 ring-[#f31260] hover:ring-[#2aa8ff] rounded-[10px] py-[10px] text-center text-[15px] font-bold leading-[18.38px]`}
             >
               RESET
             </div>

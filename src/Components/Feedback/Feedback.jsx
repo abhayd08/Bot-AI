@@ -53,11 +53,7 @@ export default function BasicModal() {
   const [feedback, setFeedback] = React.useState("");
 
   return (
-    <Modal
-      open={isFeedbackModalOpen}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
+    <Modal open={isFeedbackModalOpen} aria-labelledby="feedback-modal">
       <Box
         sx={style}
         className="border-0 outline-0 max-h-[90vh] max-w-[94vw] overflow-y-auto"
@@ -78,7 +74,7 @@ export default function BasicModal() {
           onChange={(e) => setFeedback(e.target.value)}
           className={`${
             isDarkModeChecked ? "bg-gray-950 text-white" : "bg-white text-black"
-          } mt-5 border-[1px] px-2 py-2 text-[15px] outline-0 border-solid border-[#2aa8ff] rounded-[10px] h-[160px] max-w-[100%] w-[600px]`}
+          } mt-5 border-[1px] px-2 py-2 text-[15px] outline-0 border-solid border-[#2aa8ff] rounded-[10px] min-h-[150px] h-[160px] max-w-[100%] w-[600px]`}
           type="text"
         ></textarea>
         <br />
@@ -101,7 +97,7 @@ export default function BasicModal() {
               fontSize: "16px",
               borderRadius: "10px",
             }}
-            className="text-[#f31260!important] hover:bg-[inherit!important] active:scale-[0.97] itemsToGetHoverEffect"
+            className="text-[#f31260!important] hover:bg-[inherit!important] transition-all"
           >
             Close
           </Button>
@@ -144,7 +140,7 @@ export default function BasicModal() {
               }
             }}
             variant="contained"
-            className="font-[600!important] active:scale-[0.97] itemsToGetBackgroundEffect"
+            className="font-[600!important] active:scale-[0.98] itemsToGetBackgroundEffect"
           >
             Submit
           </Button>

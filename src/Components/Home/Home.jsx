@@ -233,6 +233,9 @@ export default () => {
   useEffect(() => {
     localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
   }, [chatHistory]);
+
+  console.log(currentConversation);
+
   return (
     <MyContext.Provider
       value={{

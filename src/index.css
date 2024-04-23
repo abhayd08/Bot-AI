@@ -16,7 +16,6 @@ body {
 body {
   box-sizing: border-box;
   font-family: var(--font-primary);
-  transition: 50ms all;
 }
 
 * {
@@ -54,8 +53,8 @@ pre {
 }
 
 ::-webkit-scrollbar {
-  max-width: 8px;
-  max-height: 8px;
+  max-width: 7px;
+  max-height: 7px;
 }
 
 ::-webkit-scrollbar-thumb {
